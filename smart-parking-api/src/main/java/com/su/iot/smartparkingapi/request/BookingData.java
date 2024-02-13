@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class ReservationData implements Serializable {
+public class BookingData implements Serializable {
 
     private Long userId;
 
@@ -20,7 +20,7 @@ public class ReservationData implements Serializable {
         return userId;
     }
 
-    public ReservationData setUserId(Long userId) {
+    public BookingData setUserId(Long userId) {
         this.userId = userId;
         return this;
     }
@@ -29,7 +29,7 @@ public class ReservationData implements Serializable {
         return sensorId;
     }
 
-    public ReservationData setSensorId(Long sensorId) {
+    public BookingData setSensorId(Long sensorId) {
         this.sensorId = sensorId;
         return this;
     }
@@ -38,7 +38,7 @@ public class ReservationData implements Serializable {
         return reservationDate;
     }
 
-    public ReservationData setReservationDate(LocalDate reservationDate) {
+    public BookingData setReservationDate(LocalDate reservationDate) {
         this.reservationDate = reservationDate;
         return this;
     }
@@ -47,7 +47,7 @@ public class ReservationData implements Serializable {
         return reservationStartTime;
     }
 
-    public ReservationData setReservationStartTime(LocalDateTime reservationStartTime) {
+    public BookingData setReservationStartTime(LocalDateTime reservationStartTime) {
         this.reservationStartTime = reservationStartTime;
         return this;
     }
@@ -56,7 +56,7 @@ public class ReservationData implements Serializable {
         return reservationEndTime;
     }
 
-    public ReservationData setReservationEndTime(LocalDateTime reservationEndTime) {
+    public BookingData setReservationEndTime(LocalDateTime reservationEndTime) {
         this.reservationEndTime = reservationEndTime;
         return this;
     }

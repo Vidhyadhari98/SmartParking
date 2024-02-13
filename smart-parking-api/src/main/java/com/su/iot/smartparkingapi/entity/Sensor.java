@@ -2,7 +2,6 @@ package com.su.iot.smartparkingapi.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -13,7 +12,7 @@ import java.io.Serializable;
 public class Sensor implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long sensorId;
 
     private String sensorName;

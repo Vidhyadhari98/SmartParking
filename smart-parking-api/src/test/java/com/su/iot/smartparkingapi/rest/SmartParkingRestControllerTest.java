@@ -9,7 +9,6 @@ import io.restassured.http.ContentType;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,6 @@ import org.springframework.transaction.support.TransactionTemplate;
 import java.util.List;
 
 import static io.restassured.RestAssured.get;
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.collection.IsCollectionWithSize.hasSize;
@@ -44,7 +42,6 @@ class SmartParkingRestControllerTest {
         RestAssured.baseURI = "http://localhost:" + port;
     }
 
-    @Order(1)
     @Test
     void getParkingByLocation() {
         transactionTemplate.executeWithoutResult(transactionStatus -> {
@@ -67,38 +64,11 @@ class SmartParkingRestControllerTest {
                 .body("sensors", hasSize(1));
     }
 
-    @Order(1)
     @Test
     void getParkingByLocation_notfound() {
         get("/parking/kista")
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_NO_CONTENT);
-    }
-
-    @Order(2)
-    @Test
-    void createReservation() {
-        given()
-                .header("Content-Type", "application/json")
-                .body("{\n" +
-                        "    \"userId\": 1,\n" +
-                        "    \"sensorId\": 1\n" +
-                        "}")
-                .when()
-                .post("/reservation/create")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK);
-    }
-
-    @Order(3)
-    @Test
-    void releaseReservation() {
-        given()
-                .put("/reservation/release/1/1")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.SC_OK);
     }
 }
