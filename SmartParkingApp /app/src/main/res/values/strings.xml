@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SmartParkingApp</string>
+    <string name="welcomeText">Welcome to smart parking</string>
+    <string name="loginText">Login</string>
+    <string name="loginUserNameInputHint">User name</string>
+    <string name="selectParkingHeaderText">Parking</string>
+    <string name="title_activity_maps">MapsActivity</string>
+</resources>

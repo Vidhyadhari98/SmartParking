@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <!-- You can include your specific domain if you want to allow cleartext traffic only for it -->
+            <certificates src="system" />
+        </trust-anchors>
+    </base-config>
+</network-security-config>
