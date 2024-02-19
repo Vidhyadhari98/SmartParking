@@ -18,7 +18,7 @@ public class InitialSetup {
     CommandLineRunner initDatabase(final ParkingRepo parkingRepo,
                                    final MqttMessageListener mqttMessageListener) {
         return args -> {
-            createParkingIfNotExists("solna",
+            createParkingIfNotExists(AppConstants.LOCATION_NAME_SOLNA,
                     List.of(
                             createSensorIfExists("sensor-1"),
                             createSensorIfExists("sensor-2"),
@@ -27,7 +27,8 @@ public class InitialSetup {
                     parkingRepo);
 
             parkingRepo.findAll()
-                    .forEach(parking -> mqttMessageListener.listenToTopic("parking/" + parking.getLocation() + "/" + parking.getParkingId()));
+                    .forEach(parking -> mqttMessageListener
+                            .listenToTopic("parking/" + parking.getLocation().toLowerCase() + "/" + parking.getParkingId()));
         };
     }
 

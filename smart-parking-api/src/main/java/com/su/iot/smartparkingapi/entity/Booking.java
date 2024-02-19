@@ -1,13 +1,12 @@
 package com.su.iot.smartparkingapi.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,8 +16,8 @@ import java.time.LocalDateTime;
 public class Booking implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long bookingId;
+    @GeneratedValue
+    private Long bookingId;
 
     @NotNull
     @ManyToOne
@@ -35,11 +34,11 @@ public class Booking implements Serializable {
 
     private LocalDateTime actualBookingEndTime;
 
-    public long getBookingId() {
+    public Long getBookingId() {
         return bookingId;
     }
 
-    public Booking setBookingId(long bookingId) {
+    public Booking setBookingId(Long bookingId) {
         this.bookingId = bookingId;
         return this;
     }

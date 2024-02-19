@@ -22,7 +22,7 @@ class BookingRepoTest {
 
     @Test
     void save() {
-        final Booking booking = createBooking("user-name");
+        final Booking booking = createBooking();
 
         final Booking saveBooking = bookingRepo.save(booking);
 
@@ -33,10 +33,10 @@ class BookingRepoTest {
 
     @Test
     void findActiveBookingOnSensor() {
-        final Booking firstBooking = createBooking("first-user");
+        final Booking firstBooking = createBooking();
         firstBooking.setActualBookingEndTime(null);
         bookingRepo.save(firstBooking);
-        final Booking secondBooking = createBooking("second-user");
+        final Booking secondBooking = createBooking();
         bookingRepo.save(secondBooking);
 
         final Optional<Booking> booking = bookingRepo.findBookingBySensorSensorIdAndActualBookingEndTimeNull(
@@ -47,9 +47,9 @@ class BookingRepoTest {
 
     @Test
     void findActiveBookingOnSensor_notFound() {
-        final Booking firstBooking = createBooking("first-user");
+        final Booking firstBooking = createBooking();
         bookingRepo.save(firstBooking);
-        final Booking secondBooking = createBooking("second-user");
+        final Booking secondBooking = createBooking();
         bookingRepo.save(secondBooking);
 
         final Optional<Booking> booking = bookingRepo.findBookingBySensorSensorIdAndActualBookingEndTimeNull(
@@ -58,7 +58,7 @@ class BookingRepoTest {
         assertThat(booking).isEmpty();
     }
 
-    private Booking createBooking(String userName) {
+    private Booking createBooking() {
         Booking booking = new Booking();
         booking.setSensor(sensorRepo.save(new Sensor()));
         booking.setBookingDate(LocalDate.now());

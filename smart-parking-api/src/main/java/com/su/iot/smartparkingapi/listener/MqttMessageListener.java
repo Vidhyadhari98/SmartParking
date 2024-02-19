@@ -32,7 +32,7 @@ public class MqttMessageListener {
             }
 
             @Override
-            public void messageArrived(String topicName, MqttMessage mqttMessage) throws Exception {
+            public void messageArrived(String topicName, MqttMessage mqttMessage) {
                 logger.info("Message received --->>>>> {}", new String(mqttMessage.getPayload()));
                 messageProcessor.processMessage(new String(mqttMessage.getPayload()));
             }
